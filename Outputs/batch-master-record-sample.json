@@ -1,0 +1,18 @@
+{
+	"Material": "100141",
+	"BatchIdentifyingPlant": "1000",
+	"Batch": "70000001",
+	"Supplier": "",
+	"BatchBySupplier": "",
+	"CountryOfOrigin": "",
+	"RegionOfOrigin": "",
+	"MatlBatchAvailabilityDate": "20211109",
+	"ShelfLifeExpirationDate": "",
+	"ManufactureDate": "20211109",
+	"CreationDateTime": "20211109",
+	"LastChangeDateTime": "20211109/10:11:55",
+	"BatchIsMarkedForDeletion": "",
+	"cursor": "/Users/kyotatashiro/go/src/sap-api-integrations-batch-master-record-reads/SAP_API_Caller/caller.go#L220",
+	"level": "INFO",
+	"time": "2021-11-20T18:28:36.143833+09:00"
+}
