@@ -11,13 +11,19 @@ type EC_MC struct {
 		Quantity       float64     `json:"quantity"`
 		PickedQuantity float64     `json:"picked_quantity"`
 		Price          float64     `json:"price"`
+	    Batch          string      `json:"batch"`
 	} `json:"document"`
 	ProductionOrder struct {
-		DocumentNo        string      `json:"document_no"`
-		Status            string      `json:"status"`
-		DeliverTo         string      `json:"deliver_to"`
-		Quantity          float64     `json:"quantity"`
-		CompletedQuantity float64     `json:"completed_quantity"`
+		DocumentNo           string      `json:"document_no"`
+		Status               string      `json:"status"`
+		DeliverTo            string      `json:"deliver_to"`
+		Quantity             float64     `json:"quantity"`
+		CompletedQuantity    float64     `json:"completed_quantity"`
+	    PlannedStartDate     string      `json:"planned_start_date"`
+	    PlannedValidatedDate string      `json:"planned_validated_date"`
+	    ActualStartDate      string      `json:"actual_start_date"`
+	    ActualValidatedDate  string      `json:"actual_validated_date"`
+	    Batch                string      `json:"batch"`
 		Work              struct {
 			WorkNo                   string      `json:"work_no"`
 			Quantity                 float64     `json:"quantity"`
