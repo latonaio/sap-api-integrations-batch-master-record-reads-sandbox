@@ -1,5 +1,5 @@
 # sap-api-integrations-batch-master-record-reads     
-sap-api-integrations-batch-master-record-reads は、外部システム(特にエッジコンピューティング環境)をSAPと統合することを目的に、SAP API で品目マスタデータを取得するマイクロサービスです。  
+sap-api-integrations-batch-master-record-reads は、外部システム(特にエッジコンピューティング環境)をSAPと統合することを目的に、SAP API で ロットマスタデータ を取得するマイクロサービスです。  
 sap-api-integrations-batch-master-record-reads には、サンプルのAPI Json フォーマットが含まれています。  
 sap-api-integrations-batch-master-record-reads は、オンプレミス版である（＝クラウド版ではない）SAPS4HANA API の利用を前提としています。クラウド版APIを利用する場合は、ご注意ください。  
 https://api.sap.com/api/OP_API_BATCH_SRV_0001/overview 
