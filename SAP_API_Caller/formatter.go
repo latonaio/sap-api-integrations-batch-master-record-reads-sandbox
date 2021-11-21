@@ -5,7 +5,6 @@ type BatchMasterRecord struct {
 	 Result        bool   `json:"result"`
 	 RedisKey      string `json:"redis_key"`
 	 Filepath      string `json:"filepath"`
-	 Batch         string `json:"batch"`
 	 APISchema     string `json:"api_schema"`
 	 MaterialCode  string `json:"material_code"`
 	 Plant         string `json:"plant"`

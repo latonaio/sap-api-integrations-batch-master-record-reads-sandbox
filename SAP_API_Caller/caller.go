@@ -36,6 +36,17 @@ func (c *SAPAPICaller) AsyncGetBatchMasterRecord(Material, BatchIdentifyingPlant
 	wg.Wait()
 }
 
+func (c *SAPAPICaller) Batch(Material, BatchIdentifyingPlant, Batch string) {
+	res, err := c.callBatchSrvAPIRequirementBatch("Batch", Material, BatchIdentifyingPlant, Batch)
+	if err != nil {
+		c.log.Error(err)
+		return
+	}
+
+	c.log.Info(res)
+
+}
+
 func (c *SAPAPICaller) callBatchSrvAPIRequirement(api, Material, BatchIdentifyingPlant, Batch string) ([]byte, error) {
 	url := strings.Join([]string{c.baseURL, "API_BATCH_SRV", api}, "/")
 	req, _ := http.NewRequest("GET", url, nil)
