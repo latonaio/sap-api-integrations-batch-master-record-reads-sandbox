@@ -11,8 +11,9 @@
 	"ManufactureDate": "20211109",
 	"CreationDateTime": "20211109",
 	"LastChangeDateTime": "20211109/10:11:55",
-	"BatchIsMarkedForDeletion": "",
+	"BatchIsMarkedForDeletion": false,
 	"cursor": "/Users/kyotatashiro/go/src/sap-api-integrations-batch-master-record-reads/SAP_API_Caller/caller.go#L220",
+	"function": "sap-api-integrations-batch-master-record-reads/SAP_API_Caller.(*SAPAPICaller).BatchMasterRecord",
 	"level": "INFO",
 	"time": "2021-11-20T18:28:36.143833+09:00"
 }
