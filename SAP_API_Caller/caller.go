@@ -4,10 +4,12 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	sap_api_output_formatter "sap-api-integrations-batch-master-record-reads/SAP_API_Output_Formatter"
 	"strings"
 	"sync"
 
 	"github.com/latonaio/golang-logging-library/logger"
+	"golang.org/x/xerrors"
 )
 
 type SAPAPICaller struct {
@@ -24,48 +26,54 @@ func NewSAPAPICaller(baseUrl string, l *logger.Logger) *SAPAPICaller {
 	}
 }
 
-func (c *SAPAPICaller) AsyncGetBatchMasterRecord(Material, BatchIdentifyingPlant, Batch string) {
+func (c *SAPAPICaller) AsyncGetBatchMasterRecord(material, batchIdentifyingPlant, batch string) {
 	wg := &sync.WaitGroup{}
 
 	wg.Add(1)
-	go func() {
-		c.Batch(Material, BatchIdentifyingPlant, Batch)
+	func() {
+		c.Batch(material, batchIdentifyingPlant, batch)
 		wg.Done()
 	}()
-	
 	wg.Wait()
 }
 
-func (c *SAPAPICaller) Batch(Material, BatchIdentifyingPlant, Batch string) {
-	res, err := c.callBatchSrvAPIRequirementBatch("Batch", Material, BatchIdentifyingPlant, Batch)
+func (c *SAPAPICaller) Batch(material, batchIdentifyingPlant, batch string) {
+	data, err := c.callBatchSrvAPIRequirementBatch("Batch", material, batchIdentifyingPlant, batch)
 	if err != nil {
 		c.log.Error(err)
 		return
 	}
-
-	c.log.Info(res)
-
+	c.log.Info(data)
 }
 
-func (c *SAPAPICaller) callBatchSrvAPIRequirement(api, Material, BatchIdentifyingPlant, Batch string) ([]byte, error) {
+func (c *SAPAPICaller) callBatchSrvAPIRequirementBatch(api, material, batchIdentifyingPlant, batch string) (*sap_api_output_formatter.Batch, error) {
 	url := strings.Join([]string{c.baseURL, "API_BATCH_SRV", api}, "/")
 	req, _ := http.NewRequest("GET", url, nil)
 
-	params := req.URL.Query()
-	// params.Add("$select", "Material, BatchIdentifyingPlant, Batch")
-	params.Add("$filter", fmt.Sprintf("Material eq '%s' and BatchIdentifyingPlant eq '%s' and Batch eq '%s'", Material, BatchIdentifyingPlant, Batch))
-	req.URL.RawQuery = params.Encode()
+	c.setHeaderAPIKeyAccept(req)
+	c.getQueryWithBatch(req, material, batchIdentifyingPlant, batch)
 
-	req.Header.Set("APIKey", c.apiKey)
-	req.Header.Set("Accept", "application/json")
-
-	client := new(http.Client)
-	resp, err := client.Do(req)
+	resp, err := new(http.Client).Do(req)
 	if err != nil {
-		return nil, err
+		return nil, xerrors.Errorf("API request error: %w", err)
 	}
 	defer resp.Body.Close()
 
 	byteArray, _ := ioutil.ReadAll(resp.Body)
-	return byteArray, nil
+	data, err := sap_api_output_formatter.ConvertToBatch(byteArray, c.log)
+	if err != nil {
+		return nil, xerrors.Errorf("convert error: %w", err)
+	}
+	return data, nil
+}
+
+func (c *SAPAPICaller) setHeaderAPIKeyAccept(req *http.Request) {
+	req.Header.Set("APIKey", c.apiKey)
+	req.Header.Set("Accept", "application/json")
+}
+
+func (c *SAPAPICaller) getQueryWithBatch(req *http.Request, material, batchIdentifyingPlant, batch string) {
+	params := req.URL.Query()
+	params.Add("$filter", fmt.Sprintf("Material eq '%s' and BatchIdentifyingPlant eq '%s' and Batch eq '%s'", material, batchIdentifyingPlant, batch))
+	req.URL.RawQuery = params.Encode()
 }
