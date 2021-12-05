@@ -13,4 +13,24 @@ sap-api-integrations-batch-master-record-reads は、主にエッジコンピュ
 ・ CPU: ARM/AMD/Intel（いずれか必須）  
 
 ## クラウド環境での利用
-sap-api-integrations-batch-master-record-reads は、外部システムがクラウド環境である場合にSAPと統合するときにおいても、利用可能なように設計されています。
+sap-api-integrations-batch-master-record-reads は、外部システムがクラウド環境である場合にSAPと統合するときにおいても、利用可能なように設計されています。  
+
+## 本レポジトリ が 対応する API サービス
+sap-api-integrations-batch-master-record-reads が対応する APIサービス は、次のものです。
+
+* APIサービス概要説明 URL: https://api.sap.com/api/OP_API_BATCH_SRV_0001/overview  
+* APIサービス名(=baseURL): API_BATCH_SRV
+
+## 本レポジトリ に 含まれる API名
+sap-api-integrations-batch-master-record-reads には、次の API をコールするためのリソースが含まれています。  
+
+* Batch（ロットマスタデータ）
+
+## API への 値入力条件 の 初期値
+sap-api-integrations-batch-master-record-reads において、API への値入力条件の初期値は、入力ファイルレイアウトの種別毎に、次の通りとなっています。  
+
+### SDC レイアウト
+
+* inoutSDC.Batch.Material（品目）
+* inoutSDC.Batch.BatchIdentifyingPlant（プラント）
+* inoutSDC.Batch.Batch（ロット）
