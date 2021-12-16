@@ -26,14 +26,23 @@ func NewSAPAPICaller(baseUrl string, l *logger.Logger) *SAPAPICaller {
 	}
 }
 
-func (c *SAPAPICaller) AsyncGetBatchMasterRecord(material, batchIdentifyingPlant, batch string) {
-	wg := &sync.WaitGroup{}
 
-	wg.Add(1)
-	func() {
-		c.Batch(material, batchIdentifyingPlant, batch)
-		wg.Done()
-	}()
+func (c *SAPAPICaller) AsyncGetBatchMasterRecord(material, batchIdentifyingPlant, batch string, accepter []string) {
+	wg := &sync.WaitGroup{}
+	wg.Add(len(accepter))
+	for _, fn := range accepter {
+		switch fn {
+		case "Batch":
+			func() {
+				c.Batch(material, batchIdentifyingPlant, batch)
+				wg.Done()
+			}()
+	
+		default:
+			wg.Done()
+		}
+	}
+
 	wg.Wait()
 }
 

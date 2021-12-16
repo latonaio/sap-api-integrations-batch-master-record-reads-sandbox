@@ -15,9 +15,18 @@ func main() {
 		"https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/", l,
 	)
 
+	accepter := inoutSDC.Accepter
+    if len(accepter) == 0 || accepter[0] == "All" {
+	    accepter = []string{
+		    "Batch",
+	    }
+    }
+
+
 	caller.AsyncGetBatchMasterRecord(
 		inoutSDC.Batch.Material,
 		inoutSDC.Batch.BatchIdentifyingPlant,
 		inoutSDC.Batch.Batch,
+		accepter,
 	)
 }

@@ -73,6 +73,7 @@ type SDC struct {
 		BatchIsMarkedForDeletion  bool   `json:"BatchIsMarkedForDeletion"`
 	} `json:"batch"`
 	APISchema    string `json:"api_schema"`
+	Accepter   []string `json:"accepter"`
 	MaterialCode string `json:"material_code"`
 	Plant        string `json:"plant"`
 	BatchCode    string `json:"batch_code"`
