@@ -35,32 +35,6 @@ sap-api-integrations-batch-master-record-reads において、API への値入�
 * inoutSDC.Batch.BatchIdentifyingPlant（プラント）
 * inoutSDC.Batch.Batch（ロット）
 
-## Output  
-本マイクロサービスでは、[golang-logging-library](https://github.com/latonaio/golang-logging-library) により、以下のようなデータがJSON形式で出力されます。   
-以下の sample.json の例は、SAP ロットマスタデータ が取得された結果の JSON の例です。  
-以下の項目のうち、"Batch" ～ "Supplier" は、/SAP_API_Output_Formatter/type.go 内 の type Batch struct {} による出力結果です。"cursor" ～ "time"は、golang-logging-library による 定型フォーマットの出力結果です。    
-
-```
-{
-	"Batch": "0000000136",
-	"BatchBySupplier": "",
-	"BatchIdentifyingPlant": "",
-	"BatchIsMarkedForDeletion": false,
-	"CountryOfOrigin": "",
-	"CreationDateTime": "/Date(1596911037742+0000)/",
-	"LastChangeDateTime": "/Date(1596911037742+0000)/",
-	"ManufactureDate": "",
-	"Material": "D2C_C_104",
-	"MatlBatchAvailabilityDate": "",
-	"RegionOfOrigin": "",
-	"ShelfLifeExpirationDate": "",
-	"Supplier": "",
-	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-batch-master-record-reads/SAP_API_Caller/caller.go#L46",
-	"function": "sap-api-integrations-batch-master-record-reads/SAP_API_Caller.(*SAPAPICaller).Batch",
-	"level": "INFO",
-	"time": "2021-12-02T14:20:04.843334+09:00"
-}
-```
 ## SAP API Bussiness Hub の API の選択的コール
 
 Latona および AION の SAP 関連リソースでは、Inputs フォルダ下の sample.json の accepter に取得したいデータの種別（＝APIの種別）を入力し、指定することができます。  
@@ -115,5 +89,32 @@ func (c *SAPAPICaller) AsyncGetBatchMasterRecord(material, batchIdentifyingPlant
 	}
 
 	wg.Wait()
+}
+```
+
+## Output  
+本マイクロサービスでは、[golang-logging-library](https://github.com/latonaio/golang-logging-library) により、以下のようなデータがJSON形式で出力されます。   
+以下の sample.json の例は、SAP ロットマスタデータ が取得された結果の JSON の例です。  
+以下の項目のうち、"Batch" ～ "Supplier" は、/SAP_API_Output_Formatter/type.go 内 の type Batch struct {} による出力結果です。"cursor" ～ "time"は、golang-logging-library による 定型フォーマットの出力結果です。    
+
+```
+{
+	"Batch": "0000000136",
+	"BatchBySupplier": "",
+	"BatchIdentifyingPlant": "",
+	"BatchIsMarkedForDeletion": false,
+	"CountryOfOrigin": "",
+	"CreationDateTime": "/Date(1596911037742+0000)/",
+	"LastChangeDateTime": "/Date(1596911037742+0000)/",
+	"ManufactureDate": "",
+	"Material": "D2C_C_104",
+	"MatlBatchAvailabilityDate": "",
+	"RegionOfOrigin": "",
+	"ShelfLifeExpirationDate": "",
+	"Supplier": "",
+	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-batch-master-record-reads/SAP_API_Caller/caller.go#L46",
+	"function": "sap-api-integrations-batch-master-record-reads/SAP_API_Caller.(*SAPAPICaller).Batch",
+	"level": "INFO",
+	"time": "2021-12-02T14:20:04.843334+09:00"
 }
 ```
