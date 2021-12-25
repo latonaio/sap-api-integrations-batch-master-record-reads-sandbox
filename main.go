@@ -16,12 +16,11 @@ func main() {
 	)
 
 	accepter := inoutSDC.Accepter
-    if len(accepter) == 0 || accepter[0] == "All" {
-	    accepter = []string{
-		    "Batch",
-	    }
-    }
-
+	if len(accepter) == 0 || accepter[0] == "All" {
+		accepter = []string{
+			"Batch",
+		}
+	}
 
 	caller.AsyncGetBatchMasterRecord(
 		inoutSDC.Batch.Material,

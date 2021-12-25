@@ -55,7 +55,7 @@ func (c *SAPAPICaller) Batch(material, batchIdentifyingPlant, batch string) {
 	c.log.Info(data)
 }
 
-func (c *SAPAPICaller) callBatchSrvAPIRequirementBatch(api, material, batchIdentifyingPlant, batch string) (*sap_api_output_formatter.Batch, error) {
+func (c *SAPAPICaller) callBatchSrvAPIRequirementBatch(api, material, batchIdentifyingPlant, batch string) ([]sap_api_output_formatter.Batch, error) {
 	url := strings.Join([]string{c.baseURL, "API_BATCH_SRV", api}, "/")
 	req, _ := http.NewRequest("GET", url, nil)
 
