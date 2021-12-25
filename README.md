@@ -99,22 +99,24 @@ func (c *SAPAPICaller) AsyncGetBatchMasterRecord(material, batchIdentifyingPlant
 
 ```
 {
-	"Batch": "0000000136",
-	"BatchBySupplier": "",
-	"BatchIdentifyingPlant": "",
-	"BatchIsMarkedForDeletion": false,
-	"CountryOfOrigin": "",
-	"CreationDateTime": "/Date(1596911037742+0000)/",
-	"LastChangeDateTime": "/Date(1596911037742+0000)/",
-	"ManufactureDate": "",
-	"Material": "D2C_C_104",
-	"MatlBatchAvailabilityDate": "",
-	"RegionOfOrigin": "",
-	"ShelfLifeExpirationDate": "",
-	"Supplier": "",
-	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-batch-master-record-reads/SAP_API_Caller/caller.go#L46",
+	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-batch-master-record-reads/SAP_API_Caller/caller.go#L55",
 	"function": "sap-api-integrations-batch-master-record-reads/SAP_API_Caller.(*SAPAPICaller).Batch",
 	"level": "INFO",
-	"time": "2021-12-02T14:20:04.843334+09:00"
+	"message": {
+		"Material": "D2C_C_104",
+		"BatchIdentifyingPlant": "",
+		"Batch": "0000000136",
+		"Supplier": "",
+		"BatchBySupplier": "",
+		"CountryOfOrigin": "",
+		"RegionOfOrigin": "",
+		"MatlBatchAvailabilityDate": "",
+		"ShelfLifeExpirationDate": "",
+		"ManufactureDate": "",
+		"CreationDateTime": "/Date(1596911037742+0000)/",
+		"LastChangeDateTime": "/Date(1596911037742+0000)/",
+		"BatchIsMarkedForDeletion": false
+	},
+	"time": "2021-12-25T12:53:13.156507+09:00"
 }
 ```
