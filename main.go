@@ -4,7 +4,7 @@ import (
 	sap_api_caller "sap-api-integrations-batch-master-record-reads/SAP_API_Caller"
 	sap_api_input_reader "sap-api-integrations-batch-master-record-reads/SAP_API_Input_Reader"
 
-	"github.com/latonaio/golang-logging-library/logger"
+	"github.com/latonaio/golang-logging-library-for-sap/logger"
 )
 
 func main() {

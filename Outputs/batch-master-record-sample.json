@@ -14,10 +14,10 @@
 			"MatlBatchAvailabilityDate": "",
 			"ShelfLifeExpirationDate": "",
 			"ManufactureDate": "",
-			"CreationDateTime": "/Date(1596911037742+0000)/",
-			"LastChangeDateTime": "/Date(1596911037742+0000)/",
+			"CreationDateTime": "",
+			"LastChangeDateTime": "",
 			"BatchIsMarkedForDeletion": false
 		}
 	],
-	"time": "2021-12-25T13:57:47.543842+09:00"
+	"time": "2022-01-27T21:23:49+09:00"
 }

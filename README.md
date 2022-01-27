@@ -93,30 +93,32 @@ func (c *SAPAPICaller) AsyncGetBatchMasterRecord(material, batchIdentifyingPlant
 ```
 
 ## Output  
-本マイクロサービスでは、[golang-logging-library](https://github.com/latonaio/golang-logging-library) により、以下のようなデータがJSON形式で出力されます。   
+本マイクロサービスでは、[golang-logging-library-for-sap](https://github.com/latonaio/golang-logging-library-for-sap) により、以下のようなデータがJSON形式で出力されます。   
 以下の sample.json の例は、SAP ロットマスタデータ が取得された結果の JSON の例です。  
-以下の項目のうち、"Material" ～ "BatchIsMarkedForDeletion" は、/SAP_API_Output_Formatter/type.go 内 の type Batch struct {} による出力結果です。"cursor" ～ "time"は、golang-logging-library による 定型フォーマットの出力結果です。    
+以下の項目のうち、"Material" ～ "BatchIsMarkedForDeletion" は、/SAP_API_Output_Formatter/type.go 内 の type Batch struct {} による出力結果です。"cursor" ～ "time"は、golang-logging-library-for-sap による 定型フォーマットの出力結果です。    
 
 ```
 {
 	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-batch-master-record-reads/SAP_API_Caller/caller.go#L55",
 	"function": "sap-api-integrations-batch-master-record-reads/SAP_API_Caller.(*SAPAPICaller).Batch",
 	"level": "INFO",
-	"message": {
-		"Material": "D2C_C_104",
-		"BatchIdentifyingPlant": "",
-		"Batch": "0000000136",
-		"Supplier": "",
-		"BatchBySupplier": "",
-		"CountryOfOrigin": "",
-		"RegionOfOrigin": "",
-		"MatlBatchAvailabilityDate": "",
-		"ShelfLifeExpirationDate": "",
-		"ManufactureDate": "",
-		"CreationDateTime": "/Date(1596911037742+0000)/",
-		"LastChangeDateTime": "/Date(1596911037742+0000)/",
-		"BatchIsMarkedForDeletion": false
-	},
-	"time": "2021-12-25T12:53:13.156507+09:00"
+	"message": [
+		{
+			"Material": "D2C_C_104",
+			"BatchIdentifyingPlant": "",
+			"Batch": "0000000136",
+			"Supplier": "",
+			"BatchBySupplier": "",
+			"CountryOfOrigin": "",
+			"RegionOfOrigin": "",
+			"MatlBatchAvailabilityDate": "",
+			"ShelfLifeExpirationDate": "",
+			"ManufactureDate": "",
+			"CreationDateTime": "",
+			"LastChangeDateTime": "",
+			"BatchIsMarkedForDeletion": false
+		}
+	],
+	"time": "2022-01-27T21:23:49+09:00"
 }
 ```
